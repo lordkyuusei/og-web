@@ -3,9 +3,14 @@
 </script>
 
 <header id="header">
-    <nav>
+    <nav class="home">
         <li>
             <a href="/">Overgrown</a>
+        </li>
+    </nav>
+    <nav class="navigation">
+        <li>
+            <a href="/chapters">Chapters</a>
         </li>
     </nav>
 </header>
@@ -25,9 +30,22 @@
     }
 
     #header {
-        background-color: var(--og-color-lgreen);
+        display: grid;
+        grid-template: 'home . navigation' 100% / auto 1fr auto;
+        align-items: center;
+        padding-inline: var(--larger-spacing);
         box-shadow: 0 0 10px 1px black;
+        background-color: var(--og-color-lgreen);
         border-radius: 0 0 var(--normal-spacing) var(--normal-spacing);
+        font-size: x-large;
+    }
+
+    .home {
+        grid-area: home;
+    }
+
+    .navigation {
+        grid-area: navigation;
     }
 
     #footer {

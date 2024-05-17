@@ -6,7 +6,13 @@
     --og-color-white: hsl(60, 100%, 90%);
     --og-color-black: hsl(339, 90%, 6%);
 
+    --smaller-spacing: 0.5rem;
+    --small-spacing: 0.75rem;
     --normal-spacing: 1rem;
+    --large-spacing: 1.5rem;
+    --larger-spacing: 2rem;
+
+    --normal-radius: 0.75rem;
 }
 
 *, *::before, *::after {
@@ -22,6 +28,7 @@ body {
     grid-template: 10vh calc(80vh - calc(var(--normal-spacing) * 2)) 10vh / 100%;
     place-content: center;
 
+    color: var(--accent-1);
     background: linear-gradient(
         to right,
         var(--og-color-green) 0%, 
@@ -29,8 +36,18 @@ body {
         var(--og-color-black) 90%, 
         var(--og-color-green) 100%
     );
-    color: var(--accent-1);
+    backdrop-filter: brightness(.5) blur(1rem);
 
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 16px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
 }
