@@ -16,7 +16,7 @@
 <button
     on:click={(event) => selectChapter(event, chapter)}
     style:background-image="url({chapter.image})"
-    class="chapter chapter-{chapter.id} {isSelected ? 'selected': ''}"
+    class="chapter chapter-{chapter.id} {isSelected ? 'selected' : ''}"
     data-chapter-summary={chapter.summary}
 >
     <header class="title"><span>{chapter.title}</span></header>
@@ -66,7 +66,8 @@
         margin-right: var(--normal-spacing);
     }
 
-    .chapter .title span, .chapter .actions a {
+    .chapter .title span,
+    .chapter .actions a {
         color: var(--og-color-white);
     }
 

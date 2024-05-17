@@ -1,5 +1,4 @@
 <script lang="ts">
-
 </script>
 
 <header id="header">
@@ -19,19 +18,18 @@
     <slot></slot>
 </main>
 
-<footer id="footer">
-    <div class="left"></div>
-    <div class="right"></div>
-</footer>
-
 <style>
-    #header, #content, #footer {
+    #header,
+    #content,
+    #footer {
         display: grid;
     }
 
     #header {
+        position: sticky;
+        top: 0;
         display: grid;
-        grid-template: 'home . navigation' 100% / auto 1fr auto;
+        grid-template: "home . navigation" 100% / auto 1fr auto;
         align-items: center;
         padding-inline: var(--larger-spacing);
         box-shadow: 0 0 10px 1px black;
@@ -49,7 +47,7 @@
     }
 
     #footer {
-        grid-template: 'left . right' 100% / 1fr 2fr 1fr;
+        grid-template: "left . right" 100% / 1fr 2fr 1fr;
 
         & > .left {
             grid-area: left;
