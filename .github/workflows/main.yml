@@ -28,7 +28,7 @@ jobs:
         mkdir -p ~/.ssh
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
+        ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
 
     - name: Install dependencies
       run: npm install
@@ -42,8 +42,8 @@ jobs:
 
     - name: Deploy to remote server
       env:
-        HOST: ${{ secrets.REMOTE_HOST }}
-        DEST: ${{ secrets.DESTINATION }}
+        HOST: ${{ secrets.HOST }}
+        DEST: ${{ secrets.DEST }}
       run: |
         tar cfv overgrown.tar ./
         scp -r overgrown.tar "$HOST:$DEST"
