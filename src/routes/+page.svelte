@@ -21,7 +21,7 @@
     <img class="clouds-middle" src={cloudsMiddle} alt="sky" />
     <img class="clouds-middle-front" src={cloudsMiddleFront} alt="sky" />
     <img class="clouds-front" src={cloudsFront} alt="sky" />
-    <div class="glass">
+    <div class="last-chapter _glass">
         <ChapterSleeve {chapter} isSelected></ChapterSleeve>
         <div class="title"></div>
     </div>
@@ -37,18 +37,16 @@
             width: 100%;
         }
 
-        & > .glass {
+        & > .last-chapter {
             aspect-ratio: 4 / 2;
-            height: 50%;
-            backdrop-filter: blur(20px);
-            margin-inline: auto;
-            margin-bottom: 30%;
-            border-radius: var(--normal-radius);
-            box-shadow: 0px 0px 30px 5px rgba(255, 255, 255, 0.2);
             display: grid;
             grid-template-columns: 40% 1fr;
-            padding-inline: 2rem;
             place-items: center;
+            height: 50%;
+            margin-inline: auto;
+            margin-bottom: 30%;
+            padding-inline: 2rem;
+            border-radius: var(--normal-radius);
         }
 
         & > * {
@@ -58,19 +56,19 @@
         }
 
         & > .clouds-back {
-            --parallax-speed: -10;
+            --parallax-speed: -5;
         }
 
         & > .clouds-middle {
-            --parallax-speed: -20;
+            --parallax-speed: -10;
         }
 
         & > .clouds-middle-front {
-            --parallax-speed: -30;
+            --parallax-speed: -15;
         }
 
         & > .clouds-front {
-            --parallax-speed: -40;
+            --parallax-speed: -20;
         }
     }
 </style>

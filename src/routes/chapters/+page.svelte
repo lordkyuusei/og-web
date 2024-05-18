@@ -34,13 +34,15 @@
     }
 </script>
 
-<ul bind:this={chaptersRef}>
-    {#each chapters as chapter}
-    <li class:selected={chapter.id === selectedChapter}>
-        <ChapterSleeve {chapter} isSelected={chapter.id === selectedChapter} on:select={selectChapter}></ChapterSleeve>
-    </li>
-    {/each}
-</ul>
+<section id="chapters">
+    <ul bind:this={chaptersRef}>
+        {#each chapters as chapter}
+        <li class:selected={chapter.id === selectedChapter}>
+            <ChapterSleeve {chapter} isSelected={chapter.id === selectedChapter} on:select={selectChapter}></ChapterSleeve>
+        </li>
+        {/each}
+    </ul>
+</section>
 
 <style>
     :root {
@@ -48,6 +50,12 @@
         --previous-width: calc(var(--selected-width) * 75/100);
         --next-width: calc(var(--selected-width) * 60/100);
         --default-width: calc(var(--selected-width) * 50/100);
+    }
+
+    #chapters {
+        display: grid;
+        grid-template: 100% / 100%;
+        place-items: center;
     }
 
     ul {

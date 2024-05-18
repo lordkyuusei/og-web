@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<header id="header">
+<header id="header" class="_glass">
     <nav class="home">
         <li>
             <a href="/">Overgrown</a>
@@ -20,47 +20,32 @@
 
 <style>
     #header,
-    #content,
-    #footer {
+    #content {
         display: grid;
     }
 
     #header {
+        z-index: 2;
+        height: 10svh;
         position: sticky;
         top: 0;
-        display: grid;
+        width: 100%;
         grid-template: "home . navigation" 100% / auto 1fr auto;
         align-items: center;
         padding-inline: var(--larger-spacing);
-        box-shadow: 0 0 10px 1px black;
-        background-color: var(--og-color-lgreen);
         border-radius: 0 0 var(--normal-spacing) var(--normal-spacing);
         font-size: x-large;
-    }
 
-    .home {
-        grid-area: home;
-    }
-
-    .navigation {
-        grid-area: navigation;
-    }
-
-    #footer {
-        grid-template: "left . right" 100% / 1fr 2fr 1fr;
-
-        & > .left {
-            grid-area: left;
-            box-shadow: 0 0 10px 1px black;
-            background-color: var(--og-color-lgreen);
-            border-top-right-radius: var(--normal-spacing);
+        & > .home {
+            grid-area: home;
         }
 
-        & > .right {
-            grid-area: right;
-            box-shadow: 0 0 10px 1px black;
-            background-color: var(--og-color-lgreen);
-            border-top-left-radius: var(--normal-spacing);
+        & > .navigation {
+            grid-area: navigation;
         }
+    }
+
+    #content {
+        height: 100%;
     }
 </style>
