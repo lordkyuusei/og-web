@@ -28,7 +28,7 @@ jobs:
         mkdir -p ~/.ssh
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H monitor.o2switch.net >> ~/.ssh/known_hosts
+        ssh-keyscan -H ${{ secrets.HOSTNAME }} >> ~/.ssh/known_hosts || (echo "Failed to resolve host ${{ secrets.HOSTNAME }}" && exit 1)
 
     - name: Install dependencies
       run: npm install
@@ -42,9 +42,10 @@ jobs:
 
     - name: Deploy to remote server
       env:
-        HOST: ${{ secrets.HOST }}
-        DEST: ${{ secrets.DEST }}
+        USER: ${{ secrets.USERNAME }}
+        HOST: ${{ secrets.HOSTNAME }}
+        DEST: ${{ secrets.OG_DESTINATION }}
       run: |
         tar cfv overgrown.tar ./
-        scp -r overgrown.tar "$HOST:$DEST"
-        ssh -t $HOST "cd $DEST; rm -rf client node_modules server */js */json; tar xf overgrown.tar; rm -rf overgrown.tar; /usr/sbin/cloudlinux-selector restart --interpreter nodejs --app-root apps/overgrown --json"
+        scp -r overgrown.tar "$USER@$HOST:$DEST"
+        ssh -t $USER@$HOST "cd $DEST; rm -rf client node_modules server */js */json; tar xf overgrown.tar; rm -rf overgrown.tar; /usr/sbin/cloudlinux-selector restart --interpreter nodejs --app-root apps/overgrown --json"
