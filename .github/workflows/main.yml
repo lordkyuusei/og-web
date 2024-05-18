@@ -28,7 +28,7 @@ jobs:
         mkdir -p ~/.ssh
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ secrets.HOSTNAME }} >> ~/.ssh/known_hosts || (echo "Failed to resolve host ${{ secrets.HOSTNAME }}" && exit 1)
+        echo "${{ secrets.HOSTNAME }} ${{ secrets.SSH_PUBLIC_KEY }}" >> ~/.ssh/known_hosts
 
     - name: Install dependencies
       run: npm install
